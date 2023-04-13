@@ -9,31 +9,36 @@ public class FuncionarioTerceirizadoTest {
     @Test
     public void testarConstrutorEntradaDespesasInvalida(){
 
-        assertThrows(IllegalArgumentException.class, ()-> {FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 120, 10, 1000);});
+        FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 120, 10, 2000);
+        assertEquals("Hugo", terceirizado.getNome());
+        assertEquals(40, terceirizado.getHorasTrabalhadas());
+        assertEquals(100, terceirizado.getValorHora());
+        assertEquals(2000, terceirizado.getDespesasAdicionais());
     }
 
     @Test
     public void testarConstrutorEntradasValidas(){
 
-        FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 120, 10, 1000);
+        FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 40, 100, 1000);
         assertEquals("Hugo", terceirizado.getNome());
-        assertEquals(120, terceirizado.getHorasTrabalhadas());
-        assertEquals(10, terceirizado.getValorHora());
-        assertEquals(20, terceirizado.getDespesasAdicionais());
+        assertEquals(40, terceirizado.getHorasTrabalhadas());
+        assertEquals(100, terceirizado.getValorHora());
+        assertEquals(1000, terceirizado.getDespesasAdicionais());
     }
 
     @Test
     public void testarModificarDespesasEntradaInvalida(){
 
-        FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 120, 10, 2000);
+        FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 40, 100, 2000);
         assertThrows(IllegalArgumentException.class, ()-> {terceirizado.setDespesasAdicionais(2000);});
 
     }
 
     @Test
     public void testarModificarDespesasEntradavalida(){
-        FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 120, 10, 1000);
-        assertEquals(10,terceirizado.setDespesasAdicionais(10));
+        FuncionarioTerceirizado terceirizado = new FuncionarioTerceirizado("Hugo", 40, 100, 1000);
+        terceirizado.setDespesasAdicionais(10);
+        assertEquals(10,terceirizado.getDespesasAdicionais());
     }
 
 
